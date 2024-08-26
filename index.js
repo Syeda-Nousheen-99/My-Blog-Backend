@@ -42,18 +42,11 @@ const fileUpload = require('express-fileupload'); // Import express-fileupload
 const { connect } = require('mongoose');
 require('dotenv').config();
 
-// Correct CORS configuration with credentials
-const corsOptions = {
-  origin: "http://localhost:5173", // Use the correct frontend origin
-  credentials: true, // Allow cookies and other credentials
-};
-app.use(cors(corsOptions)); // Apply CORS middleware
 
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
-
-// Add express-fileupload middleware before defining routes
 app.use(fileUpload());
+app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
 
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
