@@ -2,4 +2,3 @@
 .env
 .vercel
 firebase-adminsdk.json
-vercel.json
