@@ -1,16 +1,19 @@
-
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const fileUpload = require('express-fileupload'); // Import express-fileupload
+const fileUpload = require('express-fileupload');
 const { connect } = require('mongoose');
 require('dotenv').config();
 
+// CORS Configuration
+app.use(cors({
+  credentials: true,
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://backend-4e9glrmrv-syeda-nousheen-99s-projects.vercel.app/"]
+}));
 
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use(cors({ credentials: true, origin: "http://localhost:5174" }));
 
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
@@ -27,7 +30,6 @@ app.get('/', (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
-
 connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT || 5000, () => {
@@ -38,4 +40,4 @@ connect(process.env.MONGO_URI)
     console.error("MongoDB connection error:", error);
   });
 
-  module.exports = app;
+module.exports = app;
