@@ -1,4 +1,4 @@
-const {schema, model, Schema} = require('mongoose')
+const {Schema, model} = require('mongoose')
 
 const postSchema = new Schema({
     title: {

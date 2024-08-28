@@ -4,6 +4,14 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const { connect } = require('mongoose');
 require('dotenv').config();
+const admin = require('firebase-admin');
+const serviceAccount = require('./firebase-adminsdk.json');
+
+// Initialize Firebase Admin SDK
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: 'blog-468a1.appspot.com'
+});
 
 // CORS Configuration
 app.use(cors({

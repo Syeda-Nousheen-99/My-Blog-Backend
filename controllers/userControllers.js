@@ -5,7 +5,8 @@ const User = require("../models/userModel")
 const fs = require('fs')
 const path = require('path')
 const {v4: uuid} = require('uuid')
-const { bucket } = require('../config/firebase');
+const admin = require('firebase-admin');
+const bucket = admin.storage().bucket();
 // ==================   REGISTER A NEW USER
 //POST : api/user/register
 //UNPROTECTED
