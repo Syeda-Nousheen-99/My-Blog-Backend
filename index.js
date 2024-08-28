@@ -28,13 +28,13 @@ app.use(cors({
   origin: "http://localhost:5173"
 }));
 
-app.use('/api/users', userRoutes);
-app.use('/api/posts', postRoutes);
+app.use('/api/users',userRoutes);
+app.use('/api/posts',postRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
 
-app.get("/", (req, res, next) => {
+app.get("/", (req,res) => {
   return res.status(200).json({
     success: true,
     message: 'Hello Backend'
