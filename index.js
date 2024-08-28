@@ -13,23 +13,23 @@ admin.initializeApp({
   storageBucket: 'blog-468a1.appspot.com'
 });
 
-// CORS Configuration
-app.use(cors({
-  credentials: true,
-  origin: ["http://localhost:5173"]
-}));
-
-app.use(express.json({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
-app.use(fileUpload());
-
 const userRoutes = require('./routes/userRoutes');
 const postRoutes = require('./routes/postRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
+
+
+app.use(express.json({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(fileUpload());
+// CORS Configuration
+app.use(cors({
+  credentials: true,
+  origin: "http://localhost:5173"
+}));
+
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
-
 
 app.use(notFound);
 app.use(errorHandler);
