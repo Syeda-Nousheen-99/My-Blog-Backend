@@ -34,6 +34,10 @@ app.use('/api/posts', postRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to backend!')
+});
+
 connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(process.env.PORT || 5000, () => {
