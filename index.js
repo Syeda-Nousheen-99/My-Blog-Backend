@@ -24,14 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 // CORS Configuration
-// app.use(cors({
-//   credentials: true,
-//   origin: "http://localhost:5173"
-// }));
 app.use(cors({
-  origin: "https://my-blog-frontend-mu.vercel.app",
+  origin: "http://localhost:5173",
   credentials: true,
 }));
+// app.use(cors({
+//   origin: "https://my-blog-frontend-mu.vercel.app",
+//   credentials: true,
+// }));
 
 app.get('/', (req, res) => {
   return res.status(200).json({
