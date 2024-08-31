@@ -24,10 +24,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 // CORS Configuration
-app.use(cors({
-  credentials: true,
-  origin: "http://localhost:5173"
-}));
+// app.use(cors({
+//   credentials: true,
+//   origin: "http://localhost:5173"
+// }));
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   return res.status(200).json({
