@@ -28,8 +28,10 @@ app.use(fileUpload());
 //   credentials: true,
 //   origin: "http://localhost:5173"
 // }));
-
-app.use(cors());
+app.use(cors({
+  origin: "https://my-blog-frontend-mu.vercel.app",
+  credentials: true,
+}));
 
 app.get('/', (req, res) => {
   return res.status(200).json({
