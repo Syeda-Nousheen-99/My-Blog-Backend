@@ -22,14 +22,22 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
+
 // CORS Configuration
 app.use(cors({
   credentials: true,
-  origin: "https://my-blog-frontend-mu.vercel.app/"
+  origin: "http://localhost:5173"
 }));
 
-app.use('/api/users',userRoutes);
-app.use('/api/posts',postRoutes);
+app.get('/', (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: 'Hello Backend'
+  });
+});
+
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

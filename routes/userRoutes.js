@@ -1,4 +1,4 @@
-const {Routes, Router} = require('express')
+const { Router} = require('express')
 const {registerUser, loginUser, getUser, changeAvatar, editUser, getAuthers} = require("../controllers/userControllers")
 const authMiddleware = require('../middleware/authMiddleware')
 
